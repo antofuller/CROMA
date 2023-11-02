@@ -1,6 +1,9 @@
 # CROMA
 Official repository of **CROMA**: Remote Sensing Representations with **C**ontrastive **R**adar-**O**ptical **M**asked **A**utoencoders (NeurIPS '23)
 
+Available on arxiv: https://arxiv.org/pdf/2311.00566.pdf
+NeurIPS page: https://nips.cc/virtual/2023/poster/70928
+
 # Using Pretrained CROMA models
 My goal is to make CROMA as noob-friendly as possible.
 
