@@ -8,7 +8,21 @@ NeurIPS page: https://nips.cc/virtual/2023/poster/70928
 # Using Pretrained CROMA models
 My goal is to make CROMA as noob-friendly as possible.
 
-First, load Sentinel-1 & 2 images and preprocess them. CROMA's default image size is 120x120px, but this can be changed. Sentinel-1 must be 2 channels and Sentinel-2 must be 12 channels (remove the cirrus band if necessary).
+Download the pretrained weights here: https://huggingface.co/antofuller/CROMA/tree/main
+
+Or using wget:
+
+```bash
+wget https://huggingface.co/antofuller/CROMA/resolve/main/CROMA_base.pt
+wget https://huggingface.co/antofuller/CROMA/resolve/main/CROMA_large.pt
+```
+
+Install einops (any relatively recent version of einops and torch should work fine, please raise an issue otherwise)
+```bash
+pip install einops
+```
+
+Load Sentinel-1 & 2 images and preprocess them. CROMA's default image size is 120x120px, but this can be changed. Sentinel-1 must be 2 channels and Sentinel-2 must be 12 channels (remove the cirrus band if necessary).
 
 ```python
 import torch
@@ -64,3 +78,7 @@ outputs is a dictionary with keys:
 'joint_GAP' --> global averaging pooling the joint_encodings, shape (batch_size, dim)
 """
 ```
+
+# To do list
+- [x] upload pretrained weights
+- [ ] create helper functions for finetuning and probing
