@@ -6,7 +6,7 @@ Available on arxiv: https://arxiv.org/pdf/2311.00566.pdf
 NeurIPS page: https://nips.cc/virtual/2023/poster/70928
 
 # Using Pretrained CROMA models
-My goal is to make CROMA as noob-friendly as possible.
+My goal is to make CROMA as noob-friendly as possible. To use pretrained CROMA models, you will need the *use_croma.py* file and pretrained weights. The *pretrain_croma.py* file is only needed if you want to pretrain your own models from scratch. 
 
 Download the pretrained weights here: https://huggingface.co/antofuller/CROMA/tree/main
 
@@ -26,7 +26,7 @@ Load Sentinel-1 & 2 images and preprocess them. CROMA's default image size is 12
 
 ```python
 import torch
-from main_croma import PretrainedCROMA
+from use_croma import PretrainedCROMA
 
 device = 'cuda:0'  # use a GPU
 use_8_bit = True
@@ -79,6 +79,15 @@ outputs is a dictionary with keys:
 """
 ```
 
-# To do list
-- [x] upload pretrained weights
-- [ ] create helper functions for finetuning and probing
+# Please Cite
+```bib
+@inproceedings{fuller2023croma,
+  title={CROMA: Remote Sensing Representations with Contrastive Radar-Optical Masked Autoencoders},
+  author={Fuller, Anthony and Millard, Koreen and Green, James R},
+  booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
+  year={2023}
+}
+```
+# Preprocessed Benchmarks
+We uploaded versions of publicly available benchmarks that we preprocessed—to help others build on CROMA. If you use them, please cite the original papers!!!
+https://huggingface.co/datasets/antofuller/CROMA_benchmarks
