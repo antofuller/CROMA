@@ -89,5 +89,5 @@ outputs is a dictionary with keys:
 }
 ```
 # Preprocessed Benchmarks
-We uploaded versions of publicly available benchmarks that we preprocessed—to help others build on CROMA. If you use them, please cite the original papers!!!
+We uploaded versions of publicly available benchmarks that we preprocessed—to help others build on CROMA. If you use them, **please cite the original papers!!!**
 https://huggingface.co/datasets/antofuller/CROMA_benchmarks
