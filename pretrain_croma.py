@@ -8,6 +8,10 @@ from torch import nn, einsum
 from einops import rearrange
 
 
+def exists(val):
+    return val is not None
+
+
 class CROMA(nn.Module):
     def __init__(self,
                  patch_size=8,
@@ -166,7 +170,8 @@ class Attention(nn.Module):
         q, k, v = self.create_qkv(x).chunk(3, dim=-1)
         q, k, v = map(lambda t: rearrange(t, 'b n (h d) -> b h n d', h=self.attention_heads), (q, k, v))
         attention_scores = einsum('b h i d, b h j d -> b h i j', q, k) * self.scale
-        attention_scores = attention_scores + alibi
+        if exists(alibi):
+            attention_scores = attention_scores + alibi
         attn = attention_scores.softmax(dim=-1)
         out = einsum('b h i j, b h j d -> b h i d', attn, v)
         return self.out(rearrange(out, 'b h n d -> b n (h d)'))
@@ -219,7 +224,7 @@ class BaseTransformer(nn.Module):
         if self.final_norm:
             self.norm_out = nn.LayerNorm(dim)
 
-    def forward(self, x, alibi):
+    def forward(self, x, alibi=None):
         for self_attn, ffn in self.layers:
             x = self_attn(x, alibi) + x
             x = ffn(x) + x
